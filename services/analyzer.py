@@ -25,6 +25,103 @@ def _safe_int(value) -> Optional[int]:
         return None
 
 
+def _generate_private_candidates(df: pd.DataFrame, entity_key: Optional[str] = None) -> pd.DataFrame:
+    """Generate Private candidate stats dynamically by subtracting School stats from All stats."""
+    if df.empty:
+        return df
+
+    merge_keys = ["year"]
+    if entity_key:
+        merge_keys.append(entity_key)
+
+    school_df = df[df["candidate_type"].str.lower().isin(["school", "school candidates"])].copy()
+    all_df = df[df["candidate_type"].str.lower().isin(["all", "all candidates"])].copy()
+
+    if school_df.empty or all_df.empty:
+        return df
+
+    merged = pd.merge(all_df, school_df, on=merge_keys, suffixes=("_all", "_school"))
+
+    private_rows = []
+    for _, row in merged.iterrows():
+        no_sat_all = row.get("no_sat_all") or 0
+        no_sat_school = row.get("no_sat_school") or 0
+        no_sat = max(0, int(no_sat_all) - int(no_sat_school))
+
+        eligible_no_all = row.get("eligible_no_all") or 0
+        eligible_no_school = row.get("eligible_no_school") or 0
+        eligible_no = max(0, int(eligible_no_all) - int(eligible_no_school))
+
+        eligible_pct = round((eligible_no / no_sat * 100), 2) if no_sat > 0 else 0.0
+
+        # 3A
+        three_a_no_all = row.get("three_a_no_all")
+        three_a_no_school = row.get("three_a_no_school")
+        if three_a_no_all is not None and three_a_no_school is not None:
+            three_a_no = max(0, int(three_a_no_all) - int(three_a_no_school))
+            three_a_pct = round((three_a_no / no_sat * 100), 2) if no_sat > 0 else 0.0
+        else:
+            if row.get("three_a_percentage_all") is not None and row.get("three_a_percentage_school") is not None:
+                three_a_no_all_est = (float(row["three_a_percentage_all"]) / 100.0) * no_sat_all
+                three_a_no_school_est = (float(row["three_a_percentage_school"]) / 100.0) * no_sat_school
+                three_a_no_est = max(0.0, three_a_no_all_est - three_a_no_school_est)
+                three_a_pct = round((three_a_no_est / no_sat * 100), 2) if no_sat > 0 else 0.0
+                three_a_no = int(three_a_no_est)
+            else:
+                three_a_no = None
+                three_a_pct = None
+
+        # Failed
+        failed_all_no_all = row.get("failed_all_no_all")
+        failed_all_no_school = row.get("failed_all_no_school")
+        if failed_all_no_all is not None and failed_all_no_school is not None:
+            failed_all_no = max(0, int(failed_all_no_all) - int(failed_all_no_school))
+            failed_all_pct = round((failed_all_no / no_sat * 100), 2) if no_sat > 0 else 0.0
+        else:
+            if row.get("failed_all_percentage_all") is not None and row.get("failed_all_percentage_school") is not None:
+                failed_all_all_est = (float(row["failed_all_percentage_all"]) / 100.0) * no_sat_all
+                failed_all_school_est = (float(row["failed_all_percentage_school"]) / 100.0) * no_sat_school
+                failed_all_est = max(0.0, failed_all_all_est - failed_all_school_est)
+                failed_all_pct = round((failed_all_est / no_sat * 100), 2) if no_sat > 0 else 0.0
+                failed_all_no = int(failed_all_est)
+            else:
+                failed_all_no = None
+                failed_all_pct = None
+
+        priv_row = {
+            "year": int(row["year"]),
+            "candidate_type": "Private",
+            "no_sat": no_sat,
+            "eligible_no": eligible_no,
+            "eligible_percentage": eligible_pct,
+        }
+
+        if "three_a_no" in df.columns:
+            priv_row["three_a_no"] = three_a_no
+        if "three_a_percentage" in df.columns:
+            priv_row["three_a_percentage"] = three_a_pct
+        if "failed_all_no" in df.columns:
+            priv_row["failed_all_no"] = failed_all_no
+        if "failed_all_percentage" in df.columns:
+            priv_row["failed_all_percentage"] = failed_all_pct
+
+        if entity_key and f"{entity_key}_all" in row:
+            priv_row[entity_key] = row[f"{entity_key}_all"]
+
+        private_rows.append(priv_row)
+
+    private_df = pd.DataFrame(private_rows)
+    return pd.concat([df, private_df], ignore_index=True)
+
+
+def _load_df_with_private(data_type: str, entity_key: Optional[str] = None) -> pd.DataFrame:
+    """Load table and dynamically generate/append Private candidate statistics."""
+    df = load_table_as_dataframe(data_type)
+    if df.empty or data_type == "subject":
+        return df
+    return _generate_private_candidates(df, entity_key)
+
+
 def _filter_by_year_and_type(
     df: pd.DataFrame, year: Optional[int], candidate_type: Optional[str]
 ) -> pd.DataFrame:
@@ -44,10 +141,10 @@ def _filter_by_year_and_type(
 
 def get_dashboard_summary() -> Dict[str, Any]:
     """Build the dashboard summary from all available data."""
-    yearly_df = load_table_as_dataframe("yearly")
-    province_df = load_table_as_dataframe("province")
-    district_df = load_table_as_dataframe("district")
-    stream_df = load_table_as_dataframe("stream")
+    yearly_df = _load_df_with_private("yearly")
+    province_df = _load_df_with_private("province", "province")
+    district_df = _load_df_with_private("district", "district")
+    stream_df = _load_df_with_private("stream", "stream")
     subject_df = load_table_as_dataframe("subject")
 
     years = get_distinct_years()
@@ -127,17 +224,33 @@ def get_year_analysis() -> List[Dict[str, Any]]:
     """
     Return raw year-wise candidate records.
     """
-    yearly_df = load_table_as_dataframe("yearly")
+    yearly_df = _load_df_with_private("yearly")
     if yearly_df.empty:
         return []
-    return yearly_df.to_dict(orient="records")
+    # Only return 'School' and 'Private' candidate types (filter out total/All candidate types)
+    yearly_df = yearly_df[yearly_df["candidate_type"].str.lower().isin(["school", "private"])]
+    records = yearly_df.to_dict(orient="records")
+    
+    cleaned = []
+    for r in records:
+        cleaned_row = {}
+        for k, v in r.items():
+            if pd.isna(v):
+                cleaned_row[k] = None
+            elif isinstance(v, float) and v.is_integer():
+                cleaned_row[k] = int(v)
+            else:
+                cleaned_row[k] = v
+        cleaned.append(cleaned_row)
+        
+    return cleaned
 
 
 def get_province_analysis(
     year: Optional[int] = None, candidate_type: Optional[str] = None
 ) -> Dict[str, Any]:
     """Return province rankings sorted by eligible_percentage (descending)."""
-    df = load_table_as_dataframe("province")
+    df = _load_df_with_private("province", "province")
     df = _filter_by_year_and_type(df, year, candidate_type)
 
     if df.empty:
@@ -167,7 +280,7 @@ def get_district_analysis(
     year: Optional[int] = None, candidate_type: Optional[str] = None
 ) -> Dict[str, Any]:
     """Return district rankings sorted by eligible_percentage (descending)."""
-    df = load_table_as_dataframe("district")
+    df = _load_df_with_private("district", "district")
     df = _filter_by_year_and_type(df, year, candidate_type)
 
     if df.empty:
@@ -197,7 +310,7 @@ def get_stream_analysis(
     year: Optional[int] = None, candidate_type: Optional[str] = None
 ) -> Dict[str, Any]:
     """Return stream rankings sorted by eligible_percentage (descending)."""
-    df = load_table_as_dataframe("stream")
+    df = _load_df_with_private("stream", "stream")
     df = _filter_by_year_and_type(df, year, candidate_type)
 
     if df.empty:
@@ -284,9 +397,9 @@ def _avg_pass_percentage(subject_df: pd.DataFrame, year: int) -> Optional[float]
 
 def compare_years(year1: int, year2: int) -> Dict[str, Any]:
     """Compare performance metrics between two years, formatted for CompareYears.jsx."""
-    yearly_df = load_table_as_dataframe("yearly")
-    province_df = load_table_as_dataframe("province")
-    stream_df = load_table_as_dataframe("stream")
+    yearly_df = _load_df_with_private("yearly")
+    province_df = _load_df_with_private("province", "province")
+    stream_df = _load_df_with_private("stream", "stream")
     subject_df = load_table_as_dataframe("subject")
 
     # Find year1 metrics from yearly_df (preferring candidate_type = "School")
