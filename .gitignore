@@ -22,8 +22,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Optional: ignore generated data/models if they are large
-data/
 
 
 # backend run --> uvicorn main:app --reload 

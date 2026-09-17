@@ -1,0 +1,251 @@
+year,candidate_type,district,no_sat,eligible_no,eligible_percentage
+2021,School,Batticaloa 817 623 76.25 1 Mannar,601,468,77.87
+2021,School,Jaffna 884 656 74.21 2 Vavuniya,778,579,74.42
+2021,School,"Puttalam 1,510 1,120 74.17 3 Trincomalee",1850,1370,74.05
+2021,School,"Colombo 9,103 6,576 72.24 4 Badulla",4374,3201,73.18
+2021,School,"Monaragala 1,110 796 71.71 5 Mullaitivu",646,466,72.14
+2021,School,"Kurunegala 3,370 2,393 71.01 6 Nuwara Eliya",2975,2134,71.73
+2021,School,"Ampara 1,105 772 69.86 7 Monaragala",2234,1570,70.28
+2021,School,"Badulla 1,903 1,327 69.73 8 Jaffna",2661,1863,70.01
+2021,School,"Nuwara Eliya 1,437 1,000 69.59 9 Kilinochchi",633,440,69.51
+2021,School,Mannar 252 175 69.44 10 Kegalle,4210,2918,69.31
+2021,School,"Matale 1,155 798 69.09 11 Puttalam",2948,2037,69.1
+2021,School,"Galle 2,825 1,922 68.04 12 Batticaloa",2629,1813,68.96
+2021,School,"Kandy 3,961 2,687 67.84 13 Ampara",3234,2177,67.32
+2021,School,"Matara 2,045 1,387 67.82 14 Matale",2724,1828,67.11
+2021,School,Trincomalee 610 412 67.54 15 Polonnaruwa,1795,1201,66.91
+2021,School,"Gampaha 6,167 4,150 67.29 16 Anuradhapura",4289,2807,65.45
+2021,School,Kilinochchi 229 154 67.25 17 Kurunegala,8620,5574,64.66
+2021,School,"Kegalle 2,043 1,370 67.06 18 Ratnapura",5237,3377,64.48
+2021,School,"Kalutara 3,306 2,212 66.91 19 Kandy",7101,4552,64.1
+2021,School,Polonnaruwa 945 622 65.82 20 Matara,3810,2437,63.96
+2021,School,"Ratnapura 2,721 1,790 65.78 21 Kalutara",4705,2997,63.7
+2021,School,Mullaitivu 211 138 65.40 22 Gampaha,7291,4573,62.72
+2021,School,Vavuniya 286 183 63.99 23 Hambantota,3056,1871,61.22
+2021,School,"Anuradhapura 1,990 1,248 62.71 24 Colombo",6510,3953,60.72
+2021,School,"Hambantota 1,237 763 61.68 25 Galle",4735,2869,60.59
+2021,All,Trincomalee,4962,3282,66.14
+2021,All,Badulla,11978,7899,65.95
+2021,All,Mannar,1472,965,65.56
+2021,All,Puttalam,7987,5217,65.32
+2021,All,Jaffna,7714,4993,64.73
+2021,All,Matara,12653,8178,64.63
+2021,All,Nuwara Eliya,8228,5315,64.6
+2021,All,Batticaloa,6811,4396,64.54
+2021,All,Matale,6634,4279,64.5
+2021,All,Kegalle,12304,7882,64.06
+2021,All,Monaragala,6235,3963,63.56
+2021,All,Mullaitivu,1363,866,63.54
+2021,All,Colombo,30379,19267,63.42
+2021,All,Kurunegala,22878,14408,62.98
+2021,All,Ampara,9693,6064,62.56
+2021,All,Kalutara,15534,9691,62.39
+2021,All,Galle,15204,9475,62.32
+2021,All,Ratnapura,14457,8955,61.94
+2021,All,Kandy,20959,12908,61.59
+2021,All,Vavuniya,2024,1242,61.36
+2021,All,Gampaha,25404,15467,60.88
+2021,All,Hambantota,9457,5728,60.57
+2021,All,Anuradhapura,11853,7160,60.41
+2021,All,Polonnaruwa,4938,2977,60.29
+2021,All,Kilinochchi,1561,920,58.94
+2022,School,Mannar,1179,874,74.13
+2022,School,Trincomalee,3690,2654,71.92
+2022,School,Mullaitivu,1145,821,71.7
+2022,School,Batticaloa,5591,3952,70.69
+2022,School,Puttalam,6536,4464,68.3
+2022,School,Jaffna,6497,4415,67.95
+2022,School,Badulla,10509,7069,67.27
+2022,School,Vavuniya,1651,1091,66.08
+2022,School,Ampara,7548,4947,65.54
+2022,School,Colombo,26867,17606,65.53
+2022,School,Nuwara Eliya,6952,4541,65.32
+2022,School,Kegalle,10314,6727,65.22
+2022,School,Monaragala,5655,3636,64.3
+2022,School,Matara,10601,6768,63.84
+2022,School,Galle,13255,8459,63.82
+2022,School,Kurunegala,19851,12658,63.77
+2022,School,Matale,5739,3656,63.7
+2022,School,Kalutara,13277,8438,63.55
+2022,School,Kilinochchi,1445,913,63.18
+2022,School,Ratnapura,13078,8210,62.78
+2022,School,Gampaha,21697,13575,62.57
+2022,School,Kandy,17428,10717,61.49
+2022,School,Anuradhapura,10092,6071,60.16
+2022,School,Polonnaruwa,4219,2511,59.52
+2022,School,Hambantota,7981,4714,59.07
+2022,All,Mannar,1389,991,71.35
+2022,All,Mullaitivu,1250,881,70.48
+2022,All,Trincomalee,4700,3239,68.91
+2022,All,Batticaloa,6556,4425,67.5
+2022,All,Puttalam,7607,5072,66.68
+2022,All,Jaffna,7093,4719,66.53
+2022,All,Badulla,11845,7826,66.07
+2022,All,Kegalle,11910,7726,64.87
+2022,All,Vavuniya,1873,1205,64.34
+2022,All,Nuwara Eliya,8005,5120,63.96
+2022,All,Colombo,29536,18869,63.88
+2022,All,Matara,11898,7600,63.88
+2022,All,Monaragala,6393,4082,63.85
+2022,All,Ampara,9388,5992,63.83
+2022,All,Galle,14642,9276,63.35
+2022,All,Kurunegala,22268,14092,63.28
+2022,All,Matale,6423,4045,62.98
+2022,All,Kalutara,15044,9441,62.76
+2022,All,Ratnapura,14487,9087,62.73
+2022,All,Kilinochchi,1578,980,62.1
+2022,All,Gampaha,24610,15022,61.04
+2022,All,Anuradhapura,11677,7021,60.13
+2022,All,Kandy,19763,11866,60.04
+2022,All,Hambantota,9193,5517,60.01
+2022,All,Polonnaruwa,4805,2844,59.19
+2023,School,Mannar,1208,887,73.43
+2023,School,Mullaitivu,1134,794,70.02
+2023,School,Jaffna,6396,4477,70.0
+2023,School,Batticaloa,5484,3828,69.8
+2023,School,Colombo,25646,17570,68.51
+2023,School,Kalutara,12533,8529,68.05
+2023,School,Puttalam,6364,4330,68.04
+2023,School,Vavuniya,1666,1130,67.83
+2023,School,Matara,10328,6992,67.7
+2023,School,Trincomalee,3733,2524,67.61
+2023,School,Badulla,10637,7168,67.39
+2023,School,Gampaha,20446,13594,66.49
+2023,School,Kegalle,10195,6753,66.24
+2023,School,Ampara,7641,5057,66.18
+2023,School,Ratnapura,12843,8493,66.13
+2023,School,Galle,13295,8766,65.93
+2023,School,Kurunegala,19338,12646,65.39
+2023,School,Nuwara Eliya,7263,4707,64.81
+2023,School,Monaragala,5861,3789,64.65
+2023,School,Matale,5805,3668,63.19
+2023,School,Anuradhapura,10169,6402,62.96
+2023,School,Kandy,17298,10880,62.9
+2023,School,Hambantota,8102,5041,62.22
+2023,School,Kilinochchi,1464,874,59.7
+2023,School,Polonnaruwa,4208,2444,58.08
+2023,All,Mannar,1429,1002,70.12
+2023,All,Mullaitivu,1226,844,68.84
+2023,All,Jaffna,7002,4798,68.52
+2023,All,Batticaloa,6489,4388,67.62
+2023,All,Matara,11926,7968,66.81
+2023,All,Kalutara,15188,10025,66.01
+2023,All,Trincomalee,4727,3110,65.79
+2023,All,Colombo,29515,19394,65.71
+2023,All,Vavuniya,1910,1254,65.65
+2023,All,Badulla,12239,8031,65.62
+2023,All,Ratnapura,14904,9734,65.31
+2023,All,Kegalle,12171,7925,65.11
+2023,All,Galle,15072,9738,64.61
+2023,All,Puttalam,7759,5005,64.51
+2023,All,Ampara,9838,6329,64.33
+2023,All,Kurunegala,22709,14557,64.1
+2023,All,Monaragala,6763,4328,64.0
+2023,All,Gampaha,24655,15583,63.2
+2023,All,Nuwara Eliya,8710,5475,62.86
+2023,All,Hambantota,9563,5996,62.7
+2023,All,Anuradhapura,12320,7656,62.14
+2023,All,Matale,6684,4142,61.97
+2023,All,Kandy,20231,12371,61.15
+2023,All,Kilinochchi,1605,943,58.75
+2023,All,Polonnaruwa,4978,2848,57.21
+2024,All,Mullaitivu,1269,838,66.04
+2024,All,Batticaloa,7341,4855,66.14
+2024,All,Kandy,20193,12253,60.68
+2024,All,Ampara,10755,6643,61.77
+2024,All,Monaragala,7109,4447,62.55
+2024,All,Anuradhapura,12629,7909,62.63
+2024,All,Nuwara Eliya,8707,5454,62.64
+2024,All,Matale,6760,4306,63.7
+2024,All,Gampaha,24723,15751,63.71
+2024,All,Trincomalee,4982,3177,63.77
+2024,School,Polonnaruwa,4361,2525,57.9
+2024,All,Puttalam,7573,5118,67.58
+2024,All,Jaffna,7211,4870,67.54
+2024,All,Mannar,1455,980,67.35
+2024,All,Colombo,28805,19376,67.27
+2024,All,Matara,12251,8236,67.23
+2024,All,Kalutara,15920,10631,66.78
+2024,All,Ratnapura,15104,10013,66.29
+2024,School,Kilinochchi,1478,885,59.88
+2024,School,Kandy,16407,10359,63.14
+2024,School,Monaragala,5910,3771,63.81
+2024,School,Anuradhapura,9990,6377,63.83
+2024,School,Hambantota,7761,4987,64.26
+2024,School,Ampara,8123,5252,64.66
+2024,School,Matale,5607,3648,65.06
+2024,School,Badulla,10379,6868,66.17
+2024,School,Gampaha,19152,13010,67.93
+2024,School,Galle,12658,8596,67.91
+2024,School,Vavuniya,1633,1107,67.79
+2024,School,Kegalle,10016,6732,67.21
+2024,School,Ratnapura,12532,8420,67.19
+2024,School,Trincomalee,3806,2552,67.05
+2024,School,Mullaitivu,1157,770,66.55
+2024,School,Nuwara Eliya,6886,4562,66.25
+2024,School,Puttalam,5869,4248,72.38
+2024,School,Colombo,23617,16938,71.72
+2024,School,Mannar,1209,865,71.55
+2024,School,Kalutara,12388,8763,70.74
+2024,School,Batticaloa,6024,4178,69.36
+2024,School,Jaffna,6541,4506,68.89
+2024,School,Matara,10323,7082,68.6
+2024,School,Kurunegala,18947,12963,68.42
+2024,All,Kilinochchi,1681,995,59.19
+2024,All,Polonnaruwa,5276,3028,57.39
+2024,All,Kurunegala,23236,15327,65.96
+2024,All,Galle,14970,9834,65.69
+2024,All,Kegalle,12481,8156,65.35
+2024,All,Vavuniya,1890,1226,64.87
+2024,All,Badulla,12557,8107,64.56
+2024,All,Hambantota,9483,6058,63.88
+2025,All,Puttalam,8007,5095,63.63
+2025,All,Kurunegala,23844,15181,63.67
+2025,All,Vavuniya,1925,1190,61.82
+2025,All,Gampaha,24966,15450,61.88
+2025,All,Ampara,10991,6834,62.18
+2025,All,Ratnapura,15891,9941,62.56
+2025,All,Mullaitivu,1468,924,62.94
+2025,All,Kegalle,12494,7943,63.57
+2025,All,Kilinochchi,1772,1094,61.74
+2025,All,Hambantota,10139,6261,61.75
+2025,School,Monaragala,5996,3671,61.22
+2025,School,Anuradhapura,10218,6351,62.16
+2025,School,Kandy,16068,10015,62.33
+2025,School,Hambantota,8281,5186,62.63
+2025,School,Kilinochchi,1564,985,62.98
+2025,School,Trincomalee,4100,2610,63.66
+2025,School,Nuwara Eliya,7123,4535,63.67
+2025,School,Vavuniya,1631,1045,64.07
+2025,School,Mullaitivu,1348,864,64.09
+2025,School,Ratnapura,12930,8304,64.22
+2025,School,Matale,5490,3533,64.35
+2025,School,Badulla,10243,6646,64.88
+2025,School,Ampara,8204,5387,65.66
+2025,School,Kegalle,9699,6399,65.98
+2025,School,Matara,10522,6988,66.41
+2025,School,Galle,12974,8701,67.06
+2025,School,Gampaha,18346,12405,67.62
+2025,School,Kurunegala,18027,12252,67.96
+2025,School,Jaffna,6776,4638,68.45
+2025,School,Batticaloa,5795,4001,69.04
+2025,School,Kalutara,12337,8594,69.66
+2025,School,Puttalam,5767,4042,70.09
+2025,School,Mannar,1221,858,70.27
+2025,School,Colombo,22592,15988,70.77
+2025,All,Matara,12786,8231,64.38
+2025,All,Galle,15743,10136,64.38
+2025,All,Kalutara,16413,10583,64.48
+2025,All,Colombo,29086,18898,64.97
+2025,All,Batticaloa,7236,4721,65.24
+2025,All,Mannar,1490,984,66.04
+2025,All,Jaffna,7444,4999,67.15
+2025,School,Polonnaruwa,4161,2407,57.85
+2025,All,Monaragala,7336,4369,59.56
+2025,All,Anuradhapura,13264,7933,59.81
+2025,All,Nuwara Eliya,9156,5541,60.52
+2025,All,Trincomalee,5336,3255,61.0
+2025,All,Badulla,12697,7810,61.51
+2025,All,Matale,6771,4174,61.65
+2025,All,Polonnaruwa,5271,2964,56.23
+2025,All,Kandy,20284,12016,59.24
