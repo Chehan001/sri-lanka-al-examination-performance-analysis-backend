@@ -33,8 +33,13 @@ app = FastAPI(
 
 
 # Frontend URLs allowed to call this backend
-# Add your real Vercel frontend URL in Render environment variable FRONTEND_URL
-FRONTEND_URL = os.getenv("FRONTEND_URL", "").strip().rstrip("/")
+# Add one or more frontend URLs in Render's FRONTEND_URL environment variable,
+# separated by commas for production and Vercel preview deployments.
+FRONTEND_URLS = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv("FRONTEND_URL", "").split(",")
+    if origin.strip()
+]
 
 allowed_origins = [
     "http://localhost:5173",      # Vite local frontend
@@ -42,8 +47,7 @@ allowed_origins = [
     "http://localhost:3000",      # Next.js/React local frontend
 ]
 
-if FRONTEND_URL:
-    allowed_origins.append(FRONTEND_URL)
+allowed_origins.extend(FRONTEND_URLS)
 
 
 # Enable CORS for local frontend + Vercel frontend
