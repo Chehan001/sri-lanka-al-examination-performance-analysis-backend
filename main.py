@@ -38,6 +38,7 @@ FRONTEND_URL = os.getenv("FRONTEND_URL", "").strip().rstrip("/")
 
 allowed_origins = [
     "http://localhost:5173",      # Vite local frontend
+    "http://localhost:5174",      # Alternate Vite local frontend port
     "http://localhost:3000",      # Next.js/React local frontend
 ]
 
