@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from routes import analysis_routes, export_routes, upload_routes
 from services.csv_combiner import ensure_directories
-from services.database_service import init_db
+from services.database_service import init_db, seed_db_from_processed_csv
 
 
 @asynccontextmanager
@@ -17,6 +17,7 @@ async def lifespan(app: FastAPI):
     """
     ensure_directories()
     init_db()
+    seed_db_from_processed_csv()
     yield
 
 

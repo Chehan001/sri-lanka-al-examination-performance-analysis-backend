@@ -20,11 +20,7 @@ engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
-
-# ---------------------------------------------------------------------------
 # SQLAlchemy table models – one table per CSV category
-# ---------------------------------------------------------------------------
-
 class YearlyMaster(Base):
     __tablename__ = "yearly_master"
 
@@ -119,6 +115,26 @@ TABLE_MAP = {
 def init_db() -> None:
     """Create all database tables if they do not exist yet."""
     Base.metadata.create_all(bind=engine)
+
+
+def seed_db_from_processed_csv() -> None:
+    """Load committed processed CSV data when a new deployment has an empty DB."""
+    if get_distinct_years():
+        return
+
+    processed_dir = os.path.join(BASE_DIR, "data", "processed")
+    for data_type in TABLE_MAP:
+        csv_path = os.path.join(processed_dir, f"{data_type}_master.csv")
+        if not os.path.exists(csv_path):
+            continue
+
+        dataframe = pd.read_csv(csv_path)
+        if dataframe.empty or "year" not in dataframe.columns:
+            continue
+
+        for year in sorted(dataframe["year"].dropna().unique()):
+            year_dataframe = dataframe[dataframe["year"] == year].copy()
+            save_dataframe_to_db(data_type, year_dataframe, int(year))
 
 
 def get_db():
